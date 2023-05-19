@@ -15,19 +15,11 @@ subprojects {
     }
 
     dependencies {
-//        compileOnly "org.keycloak:keycloak-model-jpa:$keycloak_version"
-//        compileOnly "org.keycloak:keycloak-model-legacy:$keycloak_version"
-//        compileOnly "org.keycloak:keycloak-model-legacy-private:$keycloak_version"
         compileOnly "org.keycloak:keycloak-services:$keycloak_version"
         compileOnly "org.keycloak:keycloak-server-spi:$keycloak_version"
         compileOnly "org.keycloak:keycloak-server-spi-private:$keycloak_version"
 
-//        compileOnly 'jakarta.persistence:jakarta.persistence-api:2.2.3'
-//        compileOnly 'javax.persistence:javax.persistence-api:2.2'
-
         configurations.implementation.extendsFrom(configurations.bundleLib)
-
-        testImplementation 'org.jboss.logging:jboss-logging:3.5.0.Final'
     }
 
     apply from: rootProject.file("gradle/publish.gradle")

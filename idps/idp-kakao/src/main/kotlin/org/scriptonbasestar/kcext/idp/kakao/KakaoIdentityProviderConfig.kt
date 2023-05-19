@@ -1,13 +1,14 @@
-package org.scriptonbasestar.kcexts.idp.naver
+package org.scriptonbasestar.kcext.idp.kakao
 
 import org.keycloak.broker.oidc.OAuth2IdentityProviderConfig
 import org.keycloak.models.IdentityProviderModel
 
-class NaverIdentityProviderConfig : OAuth2IdentityProviderConfig {
+class KakaoIdentityProviderConfig : OAuth2IdentityProviderConfig {
     constructor() : super() {
-        this.alias = NaverConstant.providerId
+        this.alias = KakaoConstant.providerId
     }
+
     constructor(model: IdentityProviderModel) : super(model) {
-        this.alias = NaverConstant.providerId
+        this.alias = KakaoConstant.providerId
     }
 }

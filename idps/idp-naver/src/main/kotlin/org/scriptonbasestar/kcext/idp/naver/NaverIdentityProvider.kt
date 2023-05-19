@@ -1,4 +1,4 @@
-package org.scriptonbasestar.kcexts.idp.naver
+package org.scriptonbasestar.kcext.idp.naver
 
 import com.fasterxml.jackson.databind.JsonNode
 import org.keycloak.broker.oidc.AbstractOAuth2IdentityProvider

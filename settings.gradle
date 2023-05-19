@@ -38,6 +38,9 @@ dependencyResolutionManagement {
 
 rootProject.name = 'sb-keycloak-exts'
 
+include 'events:event-kafka'
+include 'events:event-pulsar'
+
 include 'idps:idp-kakao'
 include 'idps:idp-line'
 include 'idps:idp-naver'

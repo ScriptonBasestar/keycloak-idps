@@ -1,4 +1,4 @@
-package org.scriptonbasestar.kctxts.idp.kakao
+package org.scriptonbasestar.kcext.idp.kakao
 
 import org.keycloak.broker.oidc.mappers.AbstractJsonUserAttributeMapper
 

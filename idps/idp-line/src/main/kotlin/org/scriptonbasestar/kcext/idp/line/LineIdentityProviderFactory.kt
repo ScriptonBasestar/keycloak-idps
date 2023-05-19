@@ -1,4 +1,4 @@
-package org.scriptonbasestar.kctxts.idp.line
+package org.scriptonbasestar.kcext.idp.line
 
 import org.keycloak.broker.provider.AbstractIdentityProviderFactory
 import org.keycloak.broker.social.SocialIdentityProviderFactory

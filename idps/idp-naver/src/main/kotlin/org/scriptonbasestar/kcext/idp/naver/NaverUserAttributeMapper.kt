@@ -1,4 +1,4 @@
-package org.scriptonbasestar.kcexts.idp.naver
+package org.scriptonbasestar.kcext.idp.naver
 
 import org.keycloak.broker.oidc.mappers.AbstractJsonUserAttributeMapper
 
