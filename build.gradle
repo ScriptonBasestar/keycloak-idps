@@ -51,28 +51,22 @@ subprojects {
     apply plugin: 'kotlin'
 
     dependencies {
-//        implementation platform("org.jetbrains.kotlin:kotlin-bom:$kotlin_version")
-//        implementation platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:$kotlin_coroutines_version")
-//        implementation platform("org.keycloak.bom:keycloak-adapter-bom:$keycloak_version")
-//        implementation platform("org.keycloak.bom:keycloak-misc-bom:$keycloak_version")
-//        implementation platform("org.keycloak.bom:keycloak-spi-bom:$keycloak_version")
-//        implementation platform("org.apache.groovy:groovy-bom:$groovy_version")
+        implementation platform("org.jetbrains.kotlin:kotlin-bom:$kotlin_version")
+        implementation platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:$kotlin_coroutines_version")
+        implementation platform("org.keycloak.bom:keycloak-adapter-bom:$keycloak_version")
+        implementation platform("org.keycloak.bom:keycloak-misc-bom:$keycloak_version")
+        implementation platform("org.keycloak.bom:keycloak-spi-bom:$keycloak_version")
+        implementation platform("org.apache.groovy:groovy-bom:$groovy_version")
 
         // kotlin
-        implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-        implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-        implementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
-        implementation "org.jetbrains.kotlinx:kotlinx-coroutines-reactor:$kotlin_coroutines_version"
-//        implementation "org.jetbrains.kotlin:kotlin-reflect"
-//        implementation "org.jetbrains.kotlin:kotlin-stdlib"
-//        implementation "org.jetbrains.kotlin:kotlin-test"
-//        implementation "org.jetbrains.kotlinx:kotlinx-coroutines-reactor"
+        implementation 'org.jetbrains.kotlin:kotlin-reflect'
+        implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+        implementation 'org.jetbrains.kotlin:kotlin-test'
+        implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-reactor'
 
         // groovy
-        implementation "org.apache.groovy:groovy:$groovy_version"
-        implementation "org.apache.groovy:groovy-json:$groovy_version"
-//        implementation "org.apache.groovy:groovy"
-//        implementation "org.apache.groovy:groovy-json"
+        implementation 'org.apache.groovy:groovy'
+        implementation 'org.apache.groovy:groovy-json'
 
         compileOnly "org.jboss.logging:jboss-logging:$jboss_logging_version"
 
