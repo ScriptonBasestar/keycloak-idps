@@ -107,4 +107,6 @@ subprojects {
         delete 'src/main/generated'
         delete 'build'
     }
+//    ktlintFormat.mustRunAfter ktlintCheck
+    compileKotlin.dependsOn ktlintFormat, ktlintCheck
 }

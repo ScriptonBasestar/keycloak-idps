@@ -12,9 +12,9 @@ https://www.keycloak.org/extensions.html
 
 Identity Providers
 
-* naver
-* kakao
-*
+* kakao -
+* naver - scope
+* line
 
 link
 * discord https://github.com/wadahiro/keycloak-discord

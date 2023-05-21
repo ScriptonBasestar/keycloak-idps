@@ -5,9 +5,9 @@ object KakaoConstant {
     val providerId = "kakao"
     val providerName = "Kakao"
 
-    val authUrl = "https://kauth.kakao.com/oauth/authorize"
+    val authorizationUrl = "https://kauth.kakao.com/oauth/authorize"
     val tokenUrl = "https://kauth.kakao.com/oauth/token"
-    val profileUrl = "https://kapi.kakao.com/v2/user/me"
+    val userInfoUrl = "https://kapi.kakao.com/v2/user/me"
 
-    val defaultScope = "profile_image openid profile_nickname"
+    val defaultScope = "profile openid account_email"
 }

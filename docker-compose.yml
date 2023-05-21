@@ -32,6 +32,7 @@ services:
 #      KC_LOG_LEVEL: DEBUG
     ports:
       - "8080:8080"
+      - "8787:8787"
     volumes:
       # events
 #      - ./events/event-kafka/build/libs/event-kafka-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/event-kafka.jar
