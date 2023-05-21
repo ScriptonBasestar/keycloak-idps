@@ -12,6 +12,10 @@ https://www.keycloak.org/extensions.html
 
 Identity Providers
 
+mappers - if custom attributes needed
+fork - custom username, password
+config - ddd
+
 * kakao -
 * naver - scope
 * line
