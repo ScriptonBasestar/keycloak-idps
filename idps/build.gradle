@@ -20,6 +20,14 @@ subprojects {
 
         configurations.implementation.extendsFrom(configurations.bundleLib)
     }
-
+    sourceSets {
+        main {
+            java {
+                srcDirs 'build/generated/source/proto/main/grpc'
+//                srcDirs 'build/generated/source/proto/main/java'
+                srcDirs 'build/generated/source/proto/main/kotlin'
+            }
+        }
+    }
     apply from: rootProject.file('gradle/publish.gradle')
 }

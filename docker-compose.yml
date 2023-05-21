@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.1.1
+    command:
+      - 'start-dev'
+      - '--debug'
+    environment:
+      DEBUG_PORT: '*:8787'
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: passw0rd
+      KC_HOSTNAME_STRICT: false
+#      KC_DB: postgres
+#      KC_DB_URL_HOST: dev_postgres
+#      KC_DB_URL_DATABASE: dev_keycloak
+#      KC_DB_SCHEMA: kc_local_0
+#      KC_DB_USERNAME: user01
+#      KC_DB_PASSWORD: passw0rd
+      KC_SPI_THEME_STATIC_MAX_AGE: -1
+      KC_SPI_THEME_CACHE_THEMES: 'false'
+      KC_SPI_THEME_CACHE_TEMPLATES: 'false'
+#      KEYCLOAK_LOGLEVEL: DEBUG
+#      JGROUPS_DISCOVERY_PROTOCOL: JDBC_PING
+#      KK_TO_RMQ_URL: dev_rabbitmq
+#      KK_TO_RMQ_VHOST: /dev_keycloak
+#      KK_TO_RMQ_USERNAME: user01
+#      KK_TO_RMQ_PASSWORD: passw0rd
+      KEYCLOAK_THEME_MAX_AGE: -1
+      KEYCLOAK_THEME_CACHE_THEMES: 'false'
+      KEYCLOAK_THEME_TEMPLATES: 'false'
+#      KC_LOG_LEVEL: DEBUG
+    ports:
+      - "8080:8080"
+    volumes:
+      # events
+#      - ./events/event-kafka/build/libs/event-kafka-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/event-kafka.jar
+      # idps
+      - ./idps/idp-kakao/build/libs/idp-kakao-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/idp-kakao.jar
+      - ./idps/idp-line/build/libs/idp-line-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/idp-line.jar
+      - ./idps/idp-naver/build/libs/idp-naver-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/idp-naver.jar

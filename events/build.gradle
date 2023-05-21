@@ -20,6 +20,11 @@ subprojects {
 
         configurations.implementation.extendsFrom(configurations.bundleLib)
     }
+    if (name != 'event-common') {
+        dependencies {
+            bundleLib project(':events:event-common')
+        }
+    }
 
     apply from: rootProject.file('gradle/publish.gradle')
 }

@@ -29,3 +29,7 @@ https://www.keycloakify.dev/
 * kafka
 * mqtt https://github.com/softwarefactory-project/keycloak-event-listener-mqtt
 * rabbitmq https://github.com/aznamier/keycloak-event-listener-rabbitmq
+
+
+docker run --rm -it --entrypoint bash quay.io/keycloak/keycloak:21.1.1
+docker run --rm -it quay.io/keycloak/keycloak:21.1.1 start-dev
