@@ -1,0 +1,46 @@
+apply plugin: 'io.quarkus'
+
+//quarkus {
+//    buildForkOptions {
+//        maxHeapSize = '2g'
+//    }
+//    codeGenForkOptions {
+//        maxHeapSize = '128m'
+//    }
+//}
+
+dependencies {
+    implementation "org.keycloak:keycloak-quarkus-server-deployment:$keycloak_version"
+    implementation "org.keycloak:keycloak-quarkus-server:$keycloak_version"
+    implementation "org.keycloak:keycloak-quarkus-server-app:$keycloak_version"
+//    implementation "org.keycloak:keycloak-dependencies-server-min:$keycloak_version"
+    implementation "org.keycloak:keycloak-dependencies-server-all:$keycloak_version"
+
+    implementation "io.quarkus:quarkus-vertx:$quarkus_version"
+    implementation "io.quarkus:quarkus-arc:$quarkus_version"
+    implementation "io.quarkus:quarkus-arc-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-core:$quarkus_version"
+    implementation "io.quarkus:quarkus-bootstrap-core:$quarkus_version"
+    implementation "io.quarkus:quarkus-bootstrap-gradle-resolver:$quarkus_version"
+
+    implementation "io.quarkus:quarkus-core-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-arc-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-reactive-routes-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-resteasy-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-resteasy-jackson-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-hibernate-orm-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-jdbc-h2-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-jdbc-postgresql-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-jdbc-mariadb-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-jdbc-mysql-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-jdbc-mssql-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-jdbc-oracle-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-bootstrap-core:$quarkus_version"
+    implementation "io.quarkus:quarkus-smallrye-health-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-micrometer-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-micrometer-registry-prometheus-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-logging-json-deployment:$quarkus_version"
+    implementation "io.quarkus:quarkus-logging-gelf-deployment:$quarkus_version"
+
+    implementation "io.quarkus:quarkus-builder:$quarkus_version"
+}

@@ -19,6 +19,8 @@ pluginManagement {
 
         id 'com.github.johnrengelman.shadow' version shadow_plugin_version
         id 'net.nemerosa.versioning' version nemerosa_versioning_plugin_version
+
+        id "io.quarkus" version quarkus_version
     }
 
     repositories {
@@ -45,6 +47,8 @@ include 'events:event-common'
 include 'events:event-kafka'
 //include 'events:event-pulsar'
 
-include ':idps:idp-kakao'
-include ':idps:idp-line'
-include ':idps:idp-naver'
+include 'idps:idp-kakao'
+include 'idps:idp-line'
+include 'idps:idp-naver'
+
+include 'testapp'
