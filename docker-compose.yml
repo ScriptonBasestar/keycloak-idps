@@ -1,31 +1,117 @@
 version: '3.9'
 
+volumes:
+  postgres_local:
+
 services:
-  keycloak:
+  postgres_local:
+    image: postgres:13
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+#      POSTGRES_USER: postgres
+#      POSTGRES_DB: dev_local
+      POSTGRES_PASSWORD: passw0rd
+    volumes:
+      - ./config/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+
+  redis_local:
+    image: redis:7-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./tmp:/logs
+      - ./tmp:/data
+      - ./config/redis/redis.conf:/usr/local/etc/redis/redis.conf
+#    command:
+#      - 'redis-server'
+#      - '/usr/local/etc/redis/redis.conf'
+#      - '--loglevel ${REDIS_LOGLEVEL:-warning}'
+#      - '--databases 16'
+#      - '--save 900 1'
+#      - '--save 300 10'
+#      - '--save 60 10000'
+#      - '--port 6379'
+#      - '--bind * -::*'
+#      - '--maxmemory ${REDIS_MAXMEM:-50mb}'
+#      - '--maxmemory-policy ${REDIS_POLICY:-noeviction}'
+#      - '--requirepass ${REDIS_PASSWORD:-passw0rd}'
+#      - '--dir /data'
+
+  rabbitmq_local:
+    image: rabbitmq:3.11-management
+    restart: always
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-user01}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:-passw0rd}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST:-/dev_local}
+  #    volumes:
+  #      # legacy style conf
+  #      - ./config/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+  #      - ./config/rabbitmq/rabbitmq.json:/etc/rabbitmq/rabbitmq.json
+
+  zookeeper_local:
+    image: confluentinc/cp-zookeeper:latest
+    restart: always
+    ports:
+      - '2181:2181'
+    environment:
+#      ALLOW_ANONYMOUS_LOGIN: 'yes'
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+
+  kafka_local:
+    image: confluentinc/cp-kafka:latest
+    restart: always
+    ports:
+      - '9092:9092'
+    environment:
+#      KAFKA_LISTENERS: PLAINTEXT://:9092
+#      ALLOW_PLAINTEXT_LISTENER: 'yes'
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper_local:2181'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka_local:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+    depends_on:
+      - zookeeper_local
+
+  keycloak_local:
     image: quay.io/keycloak/keycloak:21.1.1
     command:
       - 'start-dev'
-      - '--debug'
+#      - '--debug'
+      - '--import-realm'
     environment:
       DEBUG_PORT: '*:8787'
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: passw0rd
       KC_HOSTNAME_STRICT: false
-#      KC_DB: postgres
-#      KC_DB_URL_HOST: dev_postgres
-#      KC_DB_URL_DATABASE: dev_keycloak
-#      KC_DB_SCHEMA: kc_local_0
-#      KC_DB_USERNAME: user01
-#      KC_DB_PASSWORD: passw0rd
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres_local
+      KC_DB_URL_DATABASE: kc_db_local
+      KC_DB_SCHEMA: kc_schema_local_0
+      KC_DB_USERNAME: user01
+      KC_DB_PASSWORD: passw0rd
       KC_SPI_THEME_STATIC_MAX_AGE: -1
       KC_SPI_THEME_CACHE_THEMES: 'false'
       KC_SPI_THEME_CACHE_TEMPLATES: 'false'
 #      KEYCLOAK_LOGLEVEL: DEBUG
 #      JGROUPS_DISCOVERY_PROTOCOL: JDBC_PING
-#      KK_TO_RMQ_URL: dev_rabbitmq
-#      KK_TO_RMQ_VHOST: /dev_keycloak
-#      KK_TO_RMQ_USERNAME: user01
-#      KK_TO_RMQ_PASSWORD: passw0rd
+      KK_TO_RMQ_URL: rabbitmq_local
+      KK_TO_RMQ_VHOST: /dev_local
+      KK_TO_RMQ_USERNAME: user01
+      KK_TO_RMQ_PASSWORD: passw0rd
       KEYCLOAK_THEME_MAX_AGE: -1
       KEYCLOAK_THEME_CACHE_THEMES: 'false'
       KEYCLOAK_THEME_TEMPLATES: 'false'
@@ -34,9 +120,14 @@ services:
       - "8080:8080"
       - "8787:8787"
     volumes:
+      - ./config/keycloak/import:/opt/keycloak/data/import
       # events
-#      - ./events/event-kafka/build/libs/event-kafka-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/event-kafka.jar
+      - ./events/event-kafka/build/libs/event-kafka-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/event-kafka.jar
       # idps
       - ./idps/idp-kakao/build/libs/idp-kakao-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/idp-kakao.jar
       - ./idps/idp-line/build/libs/idp-line-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/idp-line.jar
       - ./idps/idp-naver/build/libs/idp-naver-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/idp-naver.jar
+    depends_on:
+      - kafka_local
+      - rabbitmq_local
+      - postgres_local

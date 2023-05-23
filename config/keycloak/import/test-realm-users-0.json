@@ -1,0 +1,27 @@
+{
+    "realm": "test-realm",
+    "users": [
+        {
+            "id": "e2f949b6-7d2b-4292-a867-d07ad39c77be",
+            "createdTimestamp": 1684827857640,
+            "username": "service-account-test-client",
+            "enabled": true,
+            "totp": false,
+            "emailVerified": false,
+            "serviceAccountClientId": "test-client",
+            "credentials": [],
+            "disableableCredentialTypes": [],
+            "requiredActions": [],
+            "realmRoles": [
+                "default-roles-test-realm"
+            ],
+            "clientRoles": {
+                "test-client": [
+                    "uma_protection"
+                ]
+            },
+            "notBefore": 0,
+            "groups": []
+        }
+    ]
+}

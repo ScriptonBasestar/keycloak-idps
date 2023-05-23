@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="kc debug" type="Remote">
+  <configuration default="false" name="kc_debug" type="Remote">
     <module name="sb-keycloak-exts" />
     <option name="USE_SOCKET_TRANSPORT" value="true" />
     <option name="SERVER_MODE" value="false" />

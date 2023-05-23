@@ -1,0 +1,36 @@
+{
+    "users": [
+        {
+            "name": "user01",
+            "password": "passw0rd",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": "administrator",
+            "limits": {}
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "/vhost_local"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "user01",
+            "vhost": "/vhost_local",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "exchanges": [
+        {
+            "name": "exchange_keycloak",
+            "vhost": "/vhost_local",
+            "type": "topic",
+            "durable": true,
+            "auto_delete": false,
+            "internal": false,
+            "arguments": {}
+        }
+    ]
+}

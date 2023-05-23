@@ -9,7 +9,6 @@ import org.keycloak.broker.provider.util.SimpleHttp
 import org.keycloak.broker.social.SocialIdentityProvider
 import org.keycloak.events.EventBuilder
 import org.keycloak.models.KeycloakSession
-import javax.sound.sampled.Line
 
 class LineIdentityProvider(
     keycloakSession: KeycloakSession,
@@ -20,13 +19,13 @@ class LineIdentityProvider(
 ),
     SocialIdentityProvider<LineIdentityProviderConfig> {
 
-        init {
-            config.authorizationUrl = LineConstant.authorizationUrl
-            config.tokenUrl = LineConstant.tokenUrl
-            config.userInfoUrl = LineConstant.userInfoUrl
-        }
+    init {
+        config.authorizationUrl = LineConstant.authorizationUrl
+        config.tokenUrl = LineConstant.tokenUrl
+        config.userInfoUrl = LineConstant.userInfoUrl
+    }
 
-    override fun supportsExternalExchange(): Boolean =true
+    override fun supportsExternalExchange(): Boolean = true
 
     override fun getProfileEndpointForValidation(event: EventBuilder?): String = LineConstant.userInfoUrl
 
@@ -66,7 +65,6 @@ class LineIdentityProvider(
             throw IdentityBrokerException("Could not obtain user profile from naver.", e)
         }
     }
-
 
     override fun getDefaultScopes(): String = LineConstant.defaultScope
 }
