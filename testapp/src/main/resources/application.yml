@@ -1,7 +1,7 @@
 # Inherit all configuration from the default runtime settings and sets those specific to the distribution
-quarkus:
-  application:
-    name: testapp
+#quarkus:
+#  application:
+#    name: testapp
 #  package:
 #    output-name: keycloak
 #    output-directory: lib

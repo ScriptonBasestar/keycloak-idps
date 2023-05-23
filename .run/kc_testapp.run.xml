@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="kc_testapp" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="org.keycloak.quarkus._private.IDELauncher" />
+    <option name="MAIN_CLASS_NAME" value="org.keycloak.main.IDELauncher" />
     <module name="sb-keycloak-exts.testapp.main" />
-    <option name="PROGRAM_PARAMETERS" value="start-dev --import-realm --override true" />
+    <option name="PROGRAM_PARAMETERS" value="start-dev" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="org.keycloak.quarkus._private.*" />
+        <option name="PATTERN" value="org.keycloak.main.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

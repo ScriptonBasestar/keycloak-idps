@@ -53,6 +53,7 @@ class KafkaEventListenerProvider(
 
         kafkaClient.send(routingKey, adminEvent.realmId, messageString)
     }
+
     private fun logEvent(event: Event) {
         val message = fromClientEvent(event)
         val routingKey: String = EventMessageUtil.calculateRoutingKey(event)
