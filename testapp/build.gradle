@@ -19,17 +19,16 @@ dependencies {
     implementation enforcedPlatform("org.keycloak.bom:keycloak-spi-bom:$keycloak_version")
 
     implementation "org.keycloak:keycloak-quarkus-server-deployment:$keycloak_version"
-    implementation "org.keycloak:keycloak-quarkus-server:$keycloak_version"
+//    implementation "org.keycloak:keycloak-quarkus-server:$keycloak_version"
     implementation "org.keycloak:keycloak-dependencies-server-all:$keycloak_version"
-//    implementation "org.keycloak:keycloak-dependencies-server-min:$keycloak_version"
 
 
     implementation 'io.quarkus:quarkus-vertx'
 //    implementation 'io.quarkus:quarkus-vertx-http'
-    implementation 'io.quarkus:quarkus-arc'
     implementation 'io.quarkus:quarkus-arc-deployment'
-    implementation 'io.quarkus:quarkus-core'
+//    implementation 'io.quarkus:quarkus-arc'
     implementation 'io.quarkus:quarkus-core-deployment'
+//    implementation 'io.quarkus:quarkus-core'
     implementation 'io.quarkus:quarkus-bootstrap-core'
     implementation 'io.quarkus:quarkus-bootstrap-gradle-resolver'
 
@@ -58,8 +57,8 @@ dependencies {
 //    implementation 'io.quarkus:quarkus-jdbc-mssql'
 //    implementation 'io.quarkus:quarkus-jdbc-oracle'
 
-//    implementation 'io.quarkus:quarkus-smallrye-health'
-//    implementation 'io.quarkus:quarkus-smallrye-health-deployment'
+    implementation 'io.quarkus:quarkus-smallrye-health'
+    implementation 'io.quarkus:quarkus-smallrye-health-deployment'
 //    implementation 'io.quarkus:quarkus-micrometer'
 //    implementation 'io.quarkus:quarkus-micrometer-deployment'
 //    implementation 'io.quarkus:quarkus-micrometer-registry-prometheus-deployment'

@@ -49,13 +49,23 @@ subprojects {
     apply plugin: 'groovy'
     apply plugin: 'kotlin'
 
+    configurations.all {
+        resolutionStrategy {
+//        ssibal ^^
+            force "org.keycloak:keycloak-common:$keycloak_version"
+        }
+    }
+//    configurations {
+//        all*.exclude group: 'org.keycloak'
+//    }
+
     dependencies {
-        implementation platform("org.jetbrains.kotlin:kotlin-bom:$kotlin_version")
-        implementation platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:$kotlin_coroutines_version")
-        implementation platform("org.keycloak.bom:keycloak-adapter-bom:$keycloak_version")
-        implementation platform("org.keycloak.bom:keycloak-misc-bom:$keycloak_version")
-        implementation platform("org.keycloak.bom:keycloak-spi-bom:$keycloak_version")
-        implementation platform("org.apache.groovy:groovy-bom:$groovy_version")
+        implementation enforcedPlatform("org.jetbrains.kotlin:kotlin-bom:$kotlin_version")
+        implementation enforcedPlatform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:$kotlin_coroutines_version")
+        implementation enforcedPlatform("org.keycloak.bom:keycloak-adapter-bom:$keycloak_version")
+        implementation enforcedPlatform("org.keycloak.bom:keycloak-misc-bom:$keycloak_version")
+        implementation enforcedPlatform("org.keycloak.bom:keycloak-spi-bom:$keycloak_version")
+        implementation enforcedPlatform("org.apache.groovy:groovy-bom:$groovy_version")
 
         // kotlin
         implementation 'org.jetbrains.kotlin:kotlin-reflect'
