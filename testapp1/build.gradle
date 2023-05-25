@@ -9,21 +9,16 @@ apply plugin: 'io.quarkus'
 //        maxHeapSize = '128m'
 //    }
 //}
-configurations {
-    all*.exclude group: 'org.keycloak', module: 'keycloak-config-api'
-    all*.exclude group: 'org.keycloak', module: 'keycloak-quarkus-server-deployment'
-    all*.exclude group: 'org.keycloak', module: 'keycloak-quarkus-server'
-    all*.exclude group: 'org.keycloak', module: 'keycloak-quarkus-server-app'
-}
+
 dependencies {
-//    implementation enforcedPlatform("io.quarkus:quarkus-universe-bom:$quarkus_version")
-//    implementation enforcedPlatform("io.quarkus:quarkus-bom:$quarkus_version")
-    implementation enforcedPlatform("io.quarkus.platform:quarkus-bom:$quarkus_version")
+    implementation enforcedPlatform("io.quarkus:quarkus-universe-bom:$quarkus_version")
+    implementation enforcedPlatform("io.quarkus:quarkus-bom:$quarkus_version")
 
     implementation enforcedPlatform("org.keycloak.bom:keycloak-adapter-bom:$keycloak_version")
     implementation enforcedPlatform("org.keycloak.bom:keycloak-misc-bom:$keycloak_version")
     implementation enforcedPlatform("org.keycloak.bom:keycloak-spi-bom:$keycloak_version")
 
+    implementation "org.keycloak:keycloak-quarkus-server-deployment:$keycloak_version"
     implementation "org.keycloak:keycloak-dependencies-server-all:$keycloak_version"
     implementation "org.keycloak:keycloak-config-api:$keycloak_version"
 
@@ -143,25 +138,4 @@ dependencies {
     implementation "org.infinispan:infinispan-commons:$infinispan_version"
     implementation 'info.picocli:picocli:4.7.3'
 //    implementation 'info.picocli:picocli'
-
-
-//
-    implementation 'com.openshift:openshift-restclient-java:9.0.5.Final'
-    implementation 'com.github.ua-parser:uap-java:1.5.4'
-    implementation 'org.yaml:snakeyaml:1.33'
-    implementation 'org.snakeyaml:snakeyaml-engine:2.6'
-    implementation 'com.google.zxing:core'
-    implementation 'com.google.zxing:javase'
-    implementation 'com.sun.mail:jakarta.mail:1.6.5'
-    implementation('org.apache.santuario:xmlsec:2.2.3') {
-        exclude group: 'com.fasterxml.woodstox', module: 'woodstox-core'
-    }
-    implementation 'org.jboss.resteasy:resteasy-core:4.7.7.Final'
-    // 4
-    implementation 'org.apache.commons:commons-lang3:3.11'
-    implementation 'org.liquibase:liquibase-core:4.16.1'
-    implementation 'org.jboss.spec.javax.xml.bind:jboss-jaxb-api_2.3_spec:2.0.1.Final'
-    implementation 'org.openjdk.nashorn:nashorn-core:15.4'
-    implementation 'com.sun.xml.messaging.saaj:saaj-impl'
-    implementation 'org.jvnet.staxex:stax-ex'
 }

@@ -53,6 +53,8 @@ subprojects {
         resolutionStrategy {
 //        ssibal ^^
             force "org.keycloak:keycloak-common:$keycloak_version"
+            force "org.infinispan:infinispan-core:$infinispan_version"
+            force "org.infinispan:infinispan-commons:$infinispan_version"
         }
     }
 //    configurations {

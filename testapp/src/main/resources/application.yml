@@ -1,14 +1,37 @@
 # Inherit all configuration from the default runtime settings and sets those specific to the distribution
-#quarkus:
-#  application:
-#    name: testapp
-#  package:
-#    output-name: keycloak
-#    output-directory: lib
-#    type: mutable-jar
-#    user-providers-directory: ../tmp/providers
-#    main-class: keycloak
-#    uber-jar: true
+quarkus:
+  application:
+    name: Keycloak
+    banner.enabled: false
+  package:
+    output-name: keycloak
+    output-directory: lib
+    type: mutable-jar
+    user-providers-directory: ../tmp/providers
+    main-class: keycloak
+    include-dependency-list: false
+  http:
+    root-path: /
+    non-application-root-path: ${quarkus.http.root-path}
+  health:
+    extensions:
+      enabled: false
+  datasource:
+    health:
+      enabled: false
+  micrometer:
+    binder:
+      http-server:
+        enabled: ${quarkus.micrometer.enabled}
+  transaction-manager:
+    default-transaction-timeout: 300
+    object-store-directory: ${kc.home.dir:default}${file.separator}data${file.separator}transaction-logs
+  resteasy:
+    ignore-application-classes: true
+  arc:
+    ignored-split-packages: org.keycloak.*
+  devservices:
+    enabled: false
 #  native:
 ##    builder-image: quay.io/quarkus/ubi-quarkus-native-image:21.1.1-java17
 #    builder-image: quay.io/quarkus/ubi-quarkus-native-image
@@ -20,8 +43,9 @@
 #      url: jdbc:postgresql://localhost:5432/kc_db_local
 #    username: user01
 #    password: passw0rd
-#  log:
-#    level: DEBUG
-#    min-level: DEBUG
-#    console:
-#      level: DEBUG
+  log:
+    level: DEBUG
+    min-level: DEBUG
+    console:
+      level: DEBUG
+#    category: "io.quarkus.config".level=off
