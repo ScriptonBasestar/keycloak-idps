@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="kc_testapp1" type="Application" factoryName="Application">
+  <configuration default="false" name="kc_testapp-local" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="org.keycloak.main.IDELauncher" />
-    <module name="sb-keycloak-exts.testapp1.main" />
+    <module name="sb-keycloak-exts.testapp-local.main" />
     <option name="PROGRAM_PARAMETERS" value="start-dev" />
     <extension name="coverage">
       <pattern>
@@ -17,7 +17,7 @@
       <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
       <ENTRIES>
         <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
-        <ENTRY IS_ENABLED="true" PARSER="env" IS_EXECUTABLE="false" PATH="testapp/.env" />
+        <ENTRY IS_ENABLED="true" PARSER="env" IS_EXECUTABLE="false" PATH="testapp-local/.env.sample" />
       </ENTRIES>
     </extension>
     <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">

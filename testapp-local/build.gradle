@@ -1,0 +1,171 @@
+apply plugin: 'java'
+apply plugin: 'io.quarkus'
+
+//quarkus {
+//    buildForkOptions {
+//        maxHeapSize = '2g'
+//    }
+//    codeGenForkOptions {
+//        maxHeapSize = '128m'
+//    }
+//}
+configurations {
+    all*.exclude group: 'org.keycloak', module: 'keycloak-config-api'
+    all*.exclude group: 'org.keycloak', module: 'keycloak-quarkus-server-deployment'
+    all*.exclude group: 'org.keycloak', module: 'keycloak-quarkus-dist'
+    all*.exclude group: 'org.keycloak', module: 'keycloak-quarkus-server'
+    all*.exclude group: 'org.keycloak', module: 'keycloak-quarkus-server-app'
+}
+dependencies {
+    implementation enforcedPlatform("io.quarkus:quarkus-universe-bom:$quarkus_version")
+    implementation enforcedPlatform("io.quarkus:quarkus-bom:$quarkus_version")
+    implementation enforcedPlatform("io.quarkus.platform:quarkus-bom:$quarkus_version")
+
+    implementation enforcedPlatform("org.keycloak.bom:keycloak-adapter-bom:$keycloak_version")
+    implementation enforcedPlatform("org.keycloak.bom:keycloak-misc-bom:$keycloak_version")
+    implementation enforcedPlatform("org.keycloak.bom:keycloak-spi-bom:$keycloak_version")
+
+    implementation "org.keycloak:keycloak-dependencies-server-all:$keycloak_version"
+    implementation "org.keycloak:keycloak-config-api:$keycloak_version"
+
+    implementation 'io.quarkus:quarkus-vertx'
+    implementation 'io.quarkus:quarkus-vertx-http'
+    implementation 'io.quarkus:quarkus-reactive-routes-deployment'
+    implementation 'io.quarkus:quarkus-reactive-routes'
+    implementation 'io.quarkus:quarkus-resteasy-deployment'
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-resteasy-jackson-deployment'
+    implementation 'io.quarkus:quarkus-resteasy-jackson'
+
+    implementation 'io.quarkus:quarkus-hibernate-orm-deployment'
+    implementation 'io.quarkus:quarkus-hibernate-orm'
+
+    implementation 'io.quarkus:quarkus-arc-deployment'
+    implementation 'io.quarkus:quarkus-arc'
+    implementation 'io.quarkus:quarkus-core-deployment'
+    implementation 'io.quarkus:quarkus-core'
+    implementation 'io.quarkus:quarkus-bootstrap-core'
+    implementation "io.quarkus:quarkus-bootstrap-gradle-resolver"
+
+
+    implementation 'io.quarkus:quarkus-agroal-deployment'
+    implementation 'io.quarkus:quarkus-jdbc-h2-deployment'
+    implementation 'io.quarkus:quarkus-jdbc-postgresql-deployment'
+    implementation 'io.quarkus:quarkus-jdbc-postgresql'
+    implementation 'io.quarkus:quarkus-jdbc-mariadb-deployment'
+    implementation 'io.quarkus:quarkus-jdbc-mysql-deployment'
+    implementation 'io.quarkus:quarkus-jdbc-mssql-deployment'
+    implementation 'io.quarkus:quarkus-jdbc-oracle-deployment'
+//    implementation 'io.quarkus:quarkus-agroal'
+//    implementation 'io.quarkus:quarkus-jdbc-h2'
+//    implementation 'io.quarkus:quarkus-jdbc-mariadb'
+//    implementation 'io.quarkus:quarkus-jdbc-mysql'
+//    implementation 'io.quarkus:quarkus-jdbc-mssql'
+//    implementation 'io.quarkus:quarkus-jdbc-oracle'
+
+    implementation 'io.quarkus:quarkus-smallrye-health-deployment'
+    implementation 'io.quarkus:quarkus-smallrye-health'
+    implementation 'io.quarkus:quarkus-micrometer-deployment'
+    implementation 'io.quarkus:quarkus-micrometer'
+    implementation 'io.quarkus:quarkus-micrometer-registry-prometheus-deployment'
+    implementation 'io.quarkus:quarkus-micrometer-registry-prometheus'
+
+    implementation 'io.quarkus:quarkus-logging-json-deployment'
+    implementation 'io.quarkus:quarkus-logging-json'
+    implementation 'io.quarkus:quarkus-logging-gelf-deployment'
+    implementation 'io.quarkus:quarkus-logging-gelf'
+
+    implementation 'io.quarkus:quarkus-config-yaml'
+ implementation 'io.quarkus:quarkus-builder'
+
+
+    implementation 'org.keycloak:keycloak-services'
+    implementation 'org.keycloak:keycloak-js-adapter-jar'
+    implementation 'org.keycloak:keycloak-common'
+    implementation 'org.keycloak:keycloak-core'
+    implementation 'org.keycloak:keycloak-crypto-default'
+    implementation "org.keycloak:keycloak-crypto-fips1402:$keycloak_version"
+    implementation 'org.keycloak:keycloak-server-spi'
+    implementation 'org.keycloak:keycloak-server-spi-private'
+    implementation 'org.keycloak:keycloak-themes'
+    implementation 'org.keycloak:keycloak-saml-core-public'
+    implementation 'org.keycloak:keycloak-saml-core'
+    implementation 'org.keycloak:keycloak-model-jpa'
+    implementation 'org.keycloak:keycloak-model-infinispan'
+    implementation 'org.keycloak:keycloak-model-legacy'
+    implementation 'org.keycloak:keycloak-model-legacy-private'
+    implementation 'org.keycloak:keycloak-model-legacy-services'
+    implementation 'org.keycloak:keycloak-authz-policy-common'
+    implementation 'org.keycloak:keycloak-kerberos-federation'
+    implementation 'org.keycloak:keycloak-sssd-federation'
+    implementation 'org.keycloak:keycloak-ldap-federation'
+    implementation 'org.keycloak:keycloak-config-api'
+    implementation 'org.keycloak:keycloak-model-map'
+    implementation 'org.keycloak:keycloak-model-map-jpa'
+    implementation 'org.keycloak:keycloak-model-map-hot-rod'
+    implementation 'org.keycloak:keycloak-model-map-file'
+
+    implementation "org.keycloak:keycloak-account-ui:$keycloak_version"
+    implementation "org.keycloak:keycloak-admin-ui:$keycloak_version"
+    implementation "org.keycloak:keycloak-rest-admin-ui-ext:$keycloak_version"
+
+    implementation 'org.jboss.resteasy:resteasy-multipart-provider'
+    implementation 'org.jboss.logging:commons-logging-jboss-logging'
+
+    implementation 'com.webauthn4j:webauthn4j-core'
+    implementation 'com.webauthn4j:webauthn4j-util'
+
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-cbor'
+    implementation 'org.apache.kerby:kerby-asn1:2.0.3'
+    implementation 'org.freemarker:freemarker'
+    implementation 'com.google.guava:guava'
+    implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer'
+    implementation 'org.apache.httpcomponents:httpcore'
+    implementation 'org.apache.httpcomponents:httpclient'
+
+    implementation "org.infinispan:infinispan-server-hotrod"
+    implementation "org.infinispan:infinispan-client-hotrod"
+    implementation "org.infinispan:infinispan-query-dsl"
+    implementation "org.infinispan:infinispan-remote-query-client"
+    implementation "org.infinispan:infinispan-cachestore-remote"
+    implementation "org.infinispan:infinispan-api"
+
+
+//    implementation "org.infinispan:infinispan-component-annotations:$infinispan_version"
+//    implementation "org.infinispan:protostream-processor:$infinispan_version"
+
+//    implementation "org.infinispan:jboss-marshalling:$infinispan_version"
+//    implementation "org.infinispan:jboss-marshalling-river:$infinispan_version"
+//    implementation "org.infinispan:infinispan-cachestore-remote:$infinispan_version"
+//    implementation "org.infinispan:infinispan-api:$infinispan_version"
+
+    implementation "org.infinispan:infinispan-core:$infinispan_version"
+    implementation "org.infinispan:infinispan-jboss-marshalling:$infinispan_version"
+    implementation "org.infinispan:infinispan-commons:$infinispan_version"
+    implementation 'info.picocli:picocli'
+
+
+    implementation 'com.openshift:openshift-restclient-java:9.0.5.Final'
+    implementation 'com.github.ua-parser:uap-java:1.5.4'
+    implementation 'org.yaml:snakeyaml:1.33'
+    implementation 'org.snakeyaml:snakeyaml-engine:2.6'
+    implementation 'com.google.zxing:core'
+    implementation 'com.google.zxing:javase'
+    implementation 'com.sun.mail:jakarta.mail:1.6.5'
+    implementation('org.apache.santuario:xmlsec:2.2.3') {
+        exclude group: 'com.fasterxml.woodstox', module: 'woodstox-core'
+    }
+    implementation 'org.jboss.resteasy:resteasy-core'
+//    implementation 'org.jboss.resteasy:resteasy-core:4.7.7.Final'
+    implementation 'org.apache.commons:commons-lang3:3.11'
+    implementation 'org.liquibase:liquibase-core:4.16.1'
+    implementation 'org.jboss.spec.javax.xml.bind:jboss-jaxb-api_2.3_spec:2.0.1.Final'
+    implementation 'org.openjdk.nashorn:nashorn-core:15.4'
+    implementation 'com.sun.xml.messaging.saaj:saaj-impl'
+    implementation 'org.jvnet.staxex:stax-ex'
+
+    implementation 'org.jboss.logmanager:log4j2-jboss-logmanager'
+    implementation 'org.twitter4j:twitter4j-core'
+
+    implementation 'com.openshift:openshift-restclient-java'
+}

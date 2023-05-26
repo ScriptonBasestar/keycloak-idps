@@ -51,5 +51,5 @@ include 'idps:idp-kakao'
 include 'idps:idp-line'
 include 'idps:idp-naver'
 
-include 'testapp'
-include 'testapp1'
+include 'testapp-local'
+//include 'testapp-official'

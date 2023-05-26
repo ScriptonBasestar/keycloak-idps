@@ -13,6 +13,7 @@ apply plugin: 'io.quarkus'
 dependencies {
     implementation enforcedPlatform("io.quarkus:quarkus-universe-bom:$quarkus_version")
     implementation enforcedPlatform("io.quarkus:quarkus-bom:$quarkus_version")
+    implementation enforcedPlatform("io.quarkus.platform:quarkus-bom:$quarkus_version")
 
     implementation enforcedPlatform("org.keycloak.bom:keycloak-adapter-bom:$keycloak_version")
     implementation enforcedPlatform("org.keycloak.bom:keycloak-misc-bom:$keycloak_version")

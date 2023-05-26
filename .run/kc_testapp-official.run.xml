@@ -1,8 +1,7 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="kc_testapp0" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="io.quarkus.bootstrap.runner.QuarkusEntryPoint" />
-    <module name="sb-keycloak-exts.testapp.main" />
-    <option name="PROGRAM_PARAMETERS" value="--profile=dev start-dev" />
+  <configuration default="false" name="kc_testapp-official" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.keycloak.main.IDELauncher" />
+    <option name="PROGRAM_PARAMETERS" value="start-dev" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="org.keycloak.main.*" />
@@ -17,7 +16,7 @@
       <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
       <ENTRIES>
         <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
-        <ENTRY IS_ENABLED="true" PARSER="env" IS_EXECUTABLE="false" PATH="testapp/.env" />
+        <ENTRY IS_ENABLED="true" PARSER="env" IS_EXECUTABLE="false" PATH="testapp-official/.env.sample" />
       </ENTRIES>
     </extension>
     <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
